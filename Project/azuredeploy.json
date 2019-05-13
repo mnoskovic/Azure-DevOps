@@ -37,7 +37,7 @@
       "apiVersion": "2014-02-26",
       "location": "[parameters('location')]",
       "properties": {
-        "processTemplateId": "[parameter('processTemplateId')]",
+        "processTemplateId": "[parameters('processTemplateId')]",
         "versionControlOption": "Git"
       },
       "dependsOn": [
