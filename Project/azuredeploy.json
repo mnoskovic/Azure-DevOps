@@ -5,9 +5,16 @@
     "accountName": {
       "type": "string"
     },
+    "projectName": {
+      "type": "string"
+    },
+    "processTemplateId": {
+      "type": "string",
+      "defaultValue": "Scrum"
+    },
     "location": {
       "type": "string",
-      "defaultValue": "westeurope"
+      "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {},
@@ -22,6 +29,22 @@
         "accountName": "[parameters('accountName')]",
         "ownerUpn": ""
       }
+    },
+    {
+      "type": "Microsoft.VisualStudio/account/project",
+      "kind": "project",
+      "name": "[concat(parameters('accountName'), '/', parameters('projectName'))]",
+      "apiVersion": "2014-02-26",
+      "location": "[parameters('location')]",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "processTemplateId": "[parameter('processTemplateId')]",
+        "versionControlOption": "Git"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.VisualStudio/account', parameters('accountName'))]"
+      ]
     }
   ]
 }
