@@ -36,8 +36,6 @@
       "name": "[concat(parameters('accountName'), '/', parameters('projectName'))]",
       "apiVersion": "2014-02-26",
       "location": "[parameters('location')]",
-      "tags": {},
-      "scale": null,
       "properties": {
         "processTemplateId": "[parameter('processTemplateId')]",
         "versionControlOption": "Git"
